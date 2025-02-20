@@ -1,0 +1,694 @@
+fileFormatVersion: 2
+guid: 802248de4c20b40dc86323c1d355ed56
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_glass_glass01cull
+    second: {fileID: 2100000, guid: 48898b22de1d0477da0c437af980570e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_sa_mdl_tank_big_cabitnet
+    second: {fileID: 2100000, guid: ab28a2d2425ab469e99ca51887692675, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_sa_mdl_tank_bottom03
+    second: {fileID: 2100000, guid: fc21feae8aa6f497991dbb61182b1783, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_sa_mdl_tank_cen_win03
+    second: {fileID: 2100000, guid: 28bec092a3b454dd3bc1129a6921b928, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_sa_mdl_tank_ci_floor_grass00
+    second: {fileID: 2100000, guid: 2e270a617d9f5433bab900694c94a113, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_sa_mdl_tank_desk
+    second: {fileID: 2100000, guid: 75b09d5f6f9424d9cae194397eb5c969, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_sa_mdl_tank_desk_leg
+    second: {fileID: 2100000, guid: e3b9cf00f53354266adb2ad229368854, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_sa_mdl_tank_door_patton1
+    second: {fileID: 2100000, guid: 02a32f0f61026449db4775163292b848, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_sa_mdl_tank_door_patton2
+    second: {fileID: 2100000, guid: 0201b16a17bef418e9a3af84f6093b2c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_sa_mdl_tank_drum
+    second: {fileID: 2100000, guid: dc104dea99d5441ce8372af0ab6add2a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_sa_mdl_tank_drum_top
+    second: {fileID: 2100000, guid: 19f31b905c2e7469fbec14bfcb1e6e06, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_sa_mdl_tank_fance
+    second: {fileID: 2100000, guid: adcb9bcd92a604f9d842e8f6e02694df, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_sa_mdl_tank_hyungang
+    second: {fileID: 2100000, guid: b681b2a91d58b42bb9c20d5dccf85bad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_sa_mdl_tank_iron_door
+    second: {fileID: 2100000, guid: eb88eb1c9347244e9a3109e1b6e9423b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_sa_mdl_tank_iron_pipe
+    second: {fileID: 2100000, guid: 300f1da36f377488281919242c97538c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_sa_mdl_tank_light01
+    second: {fileID: 2100000, guid: 45a5f8318433f4695b00b48070585499, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_sa_mdl_tank_light2
+    second: {fileID: 2100000, guid: 50eb97f6b3c494206a7226950c680207, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_sa_mdl_tank_roadlight_ground
+    second: {fileID: 2100000, guid: c53da51dabe0747d8926dc495d6451d1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_sa_mdl_tank_roadlight_light
+    second: {fileID: 2100000, guid: ae331ff322c014245af26ceaade7c9e1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_sa_mdl_tank_roadlight_pole
+    second: {fileID: 2100000, guid: 89fcf05025182499b808f1ef98964bf2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_sa_mdl_tank_roadplus01
+    second: {fileID: 2100000, guid: 3ae83ac44426c41d293c8d676f2c4fd0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_sa_mdl_tank_roadplus02
+    second: {fileID: 2100000, guid: 5dc81a0ded62e4bf4925af7c80408bb2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_sa_mdl_tank_s_box
+    second: {fileID: 2100000, guid: 71d68444ee61e41d6be06f13b22750d5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_sa_mdl_tank_sign
+    second: {fileID: 2100000, guid: 4d70463e268d54cb98fb00be583d7020, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_sa_mdl_tank_steelblue_01
+    second: {fileID: 2100000, guid: 8dcf97fbde05047c2b632d7173f39c44, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_sa_mdl_tank_steelblue_02
+    second: {fileID: 2100000, guid: 18072c3841f2f426c8470d6d7889c60d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_sa_mdl_tank_topblue_03
+    second: {fileID: 2100000, guid: d0c81e40a8f9b4d8db2d5b0ffb47ed82, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_sa_mdl_tank_waring_box
+    second: {fileID: 2100000, guid: 585506065d15a4830bb74f1b129d5c10, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_sa_mdl_tank_warning_sign
+    second: {fileID: 2100000, guid: 91a82bd6c05c34182bf822715ac9480f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_models_sa_mdl_tank_wood033
+    second: {fileID: 2100000, guid: 72db1960ed876457aa73a35b0c4ccda7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_a_tank_bottom10
+    second: {fileID: 2100000, guid: a00a5e84c6e064173975560a44dbde9e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_a_tank_bottom11
+    second: {fileID: 2100000, guid: bf9f556f8eaac46a990189f30fc6d541, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_a_tank_bottom12
+    second: {fileID: 2100000, guid: 79a17645f0f114ca3acfa31e4ec05eb0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_a_tank_bottom12_3
+    second: {fileID: 2100000, guid: 223a46c85a01d4d729dc89902dc20065, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_a_tank_bottom12_8
+    second: {fileID: 2100000, guid: 68a5ac4e09305402f89ea63e2c451953, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_a_tank_bottom13
+    second: {fileID: 2100000, guid: 15bddad453dde49e080133cc8e6779f3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_a_tank_bottom15
+    second: {fileID: 2100000, guid: 0f97c97aabcfd409db225697b300c787, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_a_tank_bottom16
+    second: {fileID: 2100000, guid: acf47488a3f1f4053b7007925c85cbd0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_a_tank_celling
+    second: {fileID: 2100000, guid: 658f5c281bc914df2a8d5bc9d7854367, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_a_tank_container
+    second: {fileID: 2100000, guid: ead5ab145d69343a090e379a5a41af4e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_a_tank_container_door
+    second: {fileID: 2100000, guid: a4da2091811e64ec18e8570152775d41, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_a_tank_container_inner
+    second: {fileID: 2100000, guid: ca26c20f1fc7b4e2e84a0cc0315a0f23, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_a_tank_door_shutter
+    second: {fileID: 2100000, guid: b35f598f2f0df4aa9a85d63a58db1457, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_a_tank_main_b_wall1_01
+    second: {fileID: 2100000, guid: fd151d677925c45d5baac0aaabdcc4e1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_a_tank_roadplus03
+    second: {fileID: 2100000, guid: a0dfe5df61dd94dc087116c7d24222fe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_a_tank_steelblue_02
+    second: {fileID: 2100000, guid: 6cddc5558ea744db682cc0cded7ed127, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_2f_ground
+    second: {fileID: 2100000, guid: 9e14f09deae754611975d3e1ae17a5e5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_background
+    second: {fileID: 2100000, guid: c4cbcccacabba412196c3fd65ccf46a9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_background_building
+    second: {fileID: 2100000, guid: ffbcc3aeb097b4a47a15fbf6c6d88133, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_background_building1
+    second: {fileID: 2100000, guid: da4d8bb1f49f640c794147d2b0cdfdd0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_background_building4
+    second: {fileID: 2100000, guid: a193257af5adf421abf7c8b9daaffe71, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_background_building6
+    second: {fileID: 2100000, guid: aba7fb6875b6c4777bd35466ced32a3b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_cabinet
+    second: {fileID: 2100000, guid: 08c9225180b804cf693be08730eb345f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_cabinet_gray
+    second: {fileID: 2100000, guid: 906f126e285e04fa98715113d801de4b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_cabinet_gray_side
+    second: {fileID: 2100000, guid: 62daee0e2f1c3497890240110d246a22, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_cabinet_st
+    second: {fileID: 2100000, guid: 74b6b5b6d1c6a44c28262d132fb4f30c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_cargo_doorblock
+    second: {fileID: 2100000, guid: 2ef766131df0c4911a92907df3fda0f8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_cargowallblock
+    second: {fileID: 2100000, guid: df66cc25304b14cc69f4bf2979014971, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_celling
+    second: {fileID: 2100000, guid: 76089d88ab1d040abaaa918df07b080e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_celling1
+    second: {fileID: 2100000, guid: bfcdd2fbc3ebf4b62a4f8e57a4ea4b84, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_center_gate_block
+    second: {fileID: 2100000, guid: 11d6a9f08b667473ba0d9b1b67e308c7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_center_wall_block
+    second: {fileID: 2100000, guid: 845a75e00d6e84384951c231853e54d5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_che_01
+    second: {fileID: 2100000, guid: 1ce93c12731b74cb692795258463ab8e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_ci_floor_grass01
+    second: {fileID: 2100000, guid: 63b1eb31e6c4c4fd88fe98467f0d0aaa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_control_room_f
+    second: {fileID: 2100000, guid: 17e6ebd0ddcc747b780afd936aa1a92b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_control_room_s
+    second: {fileID: 2100000, guid: cb3da2a8a5a2c4325b1cc68f565d263c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_danger_01
+    second: {fileID: 2100000, guid: eb2a9b5fd756e4aa7a62fbbfc21fb374, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_desk_leg
+    second: {fileID: 2100000, guid: 246f3b2b92646425894062e82c48e30f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_door_tle
+    second: {fileID: 2100000, guid: 76bdb4f2c86824024a854b6939bb0dec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_exit
+    second: {fileID: 2100000, guid: 2fd573ca8002a415ca1d0a86fb6752fa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_fan
+    second: {fileID: 2100000, guid: 2c6089c783afe4d0f8bd3a05a3018c75, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_grass1
+    second: {fileID: 2100000, guid: 421b028f111a8469486c322df638f260, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_ground3
+    second: {fileID: 2100000, guid: ac461309599264572839ce7d19cb78c0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_ground4
+    second: {fileID: 2100000, guid: a1d02e4010d2d43d0b5b3d6f217de6d1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_ground4_bombtext
+    second: {fileID: 2100000, guid: 14528ffd63ee5496db835f4180fe3133, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_inner_aircon
+    second: {fileID: 2100000, guid: e0230c2afbecb417a8c54470e8ea27ec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_inner_wall1
+    second: {fileID: 2100000, guid: b60b94bd816d641b484ef81f9be5f1ec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_iron_pipe
+    second: {fileID: 2100000, guid: aad95bb9d6bda4e90802d2d7d3a66cbc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_iron_wall
+    second: {fileID: 2100000, guid: fcdcd73e0bf674be980ce62eb5a9a104, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_iron_wire
+    second: {fileID: 2100000, guid: 60ad75fa3bed9460b9dab1a6b8937822, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_iron_wire_pole
+    second: {fileID: 2100000, guid: 5478cd3998f414489a9b027f9b4c2275, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_main_b_wall1
+    second: {fileID: 2100000, guid: f053e146bca1743458cc511308f642bc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_main_inner_wall
+    second: {fileID: 2100000, guid: 20a2a1ef8c149463a842b32eb42fcfd0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_main_inner_walltext
+    second: {fileID: 2100000, guid: 31d738081bfd549ef9739bfb2ab6a74b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_out_building
+    second: {fileID: 2100000, guid: b28fe67e2d9ac4f66a09d77ee20ce0e8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_out_wall2
+    second: {fileID: 2100000, guid: 592fba1243c25418e98aa369b1d5e1da, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_pan
+    second: {fileID: 2100000, guid: 30aa61446501d4d248a5f0f45fbe740f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_road
+    second: {fileID: 2100000, guid: f87ec070d89c34b15b52ed4c9cb6e3a3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_road_bombtext_a
+    second: {fileID: 2100000, guid: 62c7716aa1b23443da3aeacc70d1bb69, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_road_y_line
+    second: {fileID: 2100000, guid: 934ca2b2044a44a3caa5cc8e24b0b1db, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_roof1
+    second: {fileID: 2100000, guid: 5c08445af050544069ba3efb241957c0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_s_box
+    second: {fileID: 2100000, guid: 9ff821dbbd5634f2187c3c8eea80d6ef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_shoter
+    second: {fileID: 2100000, guid: 93b2bd1d5d2df444bab2e9b9772ef887, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_sign
+    second: {fileID: 2100000, guid: cdc78669d5fff4774a99b405ad4e8449, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_sign2
+    second: {fileID: 2100000, guid: 1613a4508fba54ad7aa290506285d302, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_step
+    second: {fileID: 2100000, guid: 2b83da0cae6fd40809c04aa2ae4b2e62, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_stone_wall
+    second: {fileID: 2100000, guid: e7e6a763230854333aec5fd7fe2c1202, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_stone_wall2
+    second: {fileID: 2100000, guid: 5e77cba755db7482791b97b5378f46a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_switch
+    second: {fileID: 2100000, guid: 99b28e2ac1b93419795f98bc35775003, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_test_2222_2
+    second: {fileID: 2100000, guid: 569b01bc985aa4f72bd55e6c2f22e644, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_test_celling
+    second: {fileID: 2100000, guid: ceb453434dfe84135a6a08865ada8933, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_underwall
+    second: {fileID: 2100000, guid: e9cf27bea57d14cd59268d8956c3b6b0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_underwall_block
+    second: {fileID: 2100000, guid: 40ddf83c020af4f15b8ed8183854df6e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_underwall_middle_block
+    second: {fileID: 2100000, guid: 8326569743c494509a97b87b4d28ff54, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_underwall_top_block
+    second: {fileID: 2100000, guid: 3ea5f2a526fab49a4a189f8934065f1b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_windows
+    second: {fileID: 2100000, guid: c7622a46d116948f8bba97f51616243f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_windows5
+    second: {fileID: 2100000, guid: 151f5fb8cad71472b815f57c672febda, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_windows6
+    second: {fileID: 2100000, guid: 858a8ca95671d479c9d144fc37b16995, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_windows7
+    second: {fileID: 2100000, guid: 34e726c23a1cd4a1e9a11dd25d140495, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_tank_wood
+    second: {fileID: 2100000, guid: 6b7784edb79dd472eb8835ecae270027, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_sa_tex_west_a_04
+    second: {fileID: 2100000, guid: c6c132e6ce02d4b7ebbf44eb1d89a8df, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_tools_toolsgrenadeclip
+    second: {fileID: 2100000, guid: 12bfa36b9ee70432bb4f6d803343db0f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_tools_toolsinvisibleladder
+    second: {fileID: 2100000, guid: 71731131a1f784bf7b98798e8f9b05a1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_tools_toolsnodraw
+    second: {fileID: 2100000, guid: 29b3aaa4ecf89481cb023546661be99d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_tools_toolsplayerclip
+    second: {fileID: 2100000, guid: 505164e88fd6d48c3805ae6f234e7dab, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_tools_toolsskybox
+    second: {fileID: 2100000, guid: 00fcc71292d7d426d84501aa15b55c6a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: materials_tools_toolstrigger
+    second: {fileID: 2100000, guid: a297cab0f6a2340d3bb6a60912b492fa, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
