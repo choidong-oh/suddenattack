@@ -18,7 +18,7 @@ public class PlayerMove : MonoBehaviour
     float v;
     public float jumpForce;
 
-    public bool ground = false;
+    bool isground = false;
 
     private bool isClimbing = false;
 
@@ -27,6 +27,8 @@ public class PlayerMove : MonoBehaviour
     public GameObject setdowncamera;
 
     bool isSitDown = false;
+    Collider coll;
+    public bool isFreeView = false;
 
 
 
@@ -44,10 +46,10 @@ public class PlayerMove : MonoBehaviour
 
         //setdowncamera = GetComponent<GameObject>();
         startVector = setdowncamera.transform.localPosition;
+        coll = GetComponent<Collider>();
     }
     private void Update()
     {
-
         //뒤돌기
         if (Input.GetKeyDown(KeyCode.F))
         {
@@ -60,39 +62,56 @@ public class PlayerMove : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, yRotation, 0);
 
         }
-        
 
-        //반동처럼
+        //반동처럼//화면 올라감
         if(Input.GetMouseButtonDown(0))
         {
             StartCoroutine(RotateSmoothly(-1f,0.1f));
         }
-        Rotate();
+
+        //마우스회전//자유시점인지
+        if (isFreeView == false)
+        {
+            Rotate();
+        }
 
 
-
-        ground = Physics.Raycast(transform.position, Vector3.down, 0.5f);
-
-        if (ground == true && Input.GetKeyDown(KeyCode.Space))
+        //점프
+        isground = Physics.Raycast(transform.position, Vector3.down, 0.5f);
+        if (isground == true && Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
         }
+
+        //임시 게임매니저에서 하면 될듯
+        if (Input.GetKeyDown(KeyCode.PageDown))
+        {
+            if (isFreeView == false)
+            {
+                isFreeView = true;
+            }
+            else if(isFreeView == true)
+            {
+                PlayerSettingReset();
+                isFreeView = false;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Home))
+        {
+            Debug.Log("dsds");
+            transform.position = new Vector3(5, -11, -5);
+        }
+
+
     }
     
 
 
     void FixedUpdate()
     {
-        if (isClimbing)
-        {
-            transform.position += new Vector3(0, v * 0.01f, 0);
-            rb.useGravity = false;
-        }
-        else
-        {
-            rb.useGravity = true;
-        }
-
+        //사다리 구현
+        //Climbing();
+        
 
         //앉기
         if (Input.GetKeyDown(KeyCode.LeftControl))
@@ -106,27 +125,44 @@ public class PlayerMove : MonoBehaviour
             float time1 = 0;
             while (time1 < 1f)
             {
-
                 time1 += Time.deltaTime;
                 setdowncamera.transform.localPosition = Vector3.Lerp(setdowncamera.transform.localPosition, startVector, time1 / 1f);
             }
 
         }
 
-        //천천히가기, 그냥가기
-        if (Input.GetKey(KeyCode.LeftShift) || isSitDown == true)
+        //이동 구현
+        //자유시점
+        if (isFreeView == true)
         {
-            Move(0.5f);
+            FreeMove();
         }
-        else
+        else if (isFreeView == false)
         {
-            Move(1f);
+            //천천히가기, 그냥가기
+            if (Input.GetKey(KeyCode.LeftShift) || isSitDown == true)
+            {
+                Move(0.5f);
+            }
+            else
+            {
+                Move(1f);
 
+            }
         }
-
 
 
     }
+
+    //리셋
+    private void PlayerSettingReset()
+    {
+        rb.useGravity = true;
+        coll.enabled = true;
+        
+    }
+    
+
     //반동처럼 보이기
     IEnumerator RotateSmoothly(float rotationAmount, float duration)
     {
@@ -146,7 +182,20 @@ public class PlayerMove : MonoBehaviour
         xRotation = targetRotation; 
     }
     
+    //사다리 구현
+    void Climbing()
+    {
+        if (isClimbing)
+        {
+            transform.position += new Vector3(0, v * 0.01f, 0);
+            rb.useGravity = false;
+        }
+        else
+        {
+            rb.useGravity = true;
+        }
 
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Stairs")
@@ -177,18 +226,38 @@ public class PlayerMove : MonoBehaviour
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse); // 힘을 가해 점프
     }
 
+    //자유시점 //Rotate(),move()꺼야댐
+    void FreeMove()
+    {
+        rb.useGravity = false;
+        coll.enabled = false;
+
+        float mouseX = Input.GetAxisRaw("Mouse X") * mouseSpeed * 0.01f;
+        float mouseY = Input.GetAxisRaw("Mouse Y") * mouseSpeed * 0.01f;
+
+        yRotation += mouseX;
+        xRotation -= mouseY;
+
+
+        transform.eulerAngles = new Vector3(xRotation, yRotation, 0);
+
+        Vector3 move =
+            transform.forward * Input.GetAxis("Vertical") +
+            transform.right * Input.GetAxis("Horizontal");
+
+        transform.position += move * 5 * Time.deltaTime;
+
+    }
     
 
     void Move(float slowspeed)
     {
-        h = Input.GetAxisRaw("Horizontal"); // 수평 이동 입력 값
-        v = Input.GetAxisRaw("Vertical");   // 수직 이동 입력 값
+        h = Input.GetAxisRaw("Horizontal");
+        v = Input.GetAxisRaw("Vertical");
 
-        // 입력에 따라 이동 방향 벡터 계산
-        Vector3 moveVec = transform.forward * v*0.5f + transform.right * h;
+        Vector3 moveVec = transform.forward * v * 0.5f + transform.right * h;
+        transform.position += moveVec * moveSpeed * slowspeed * Time.deltaTime;
 
-        // 이동 벡터를 정규화하여 이동 속도와 시간 간격을 곱한 후 현재 위치에 더함
-        transform.position += moveVec.normalized * moveSpeed * slowspeed* Time.deltaTime;
     }
 
     void Rotate()
