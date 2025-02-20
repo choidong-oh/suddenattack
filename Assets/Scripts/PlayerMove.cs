@@ -110,7 +110,7 @@ public class PlayerMove : MonoBehaviour
     void FixedUpdate()
     {
         //사다리 구현
-        //Climbing();
+        Climbing();
         
 
         //앉기
@@ -185,7 +185,13 @@ public class PlayerMove : MonoBehaviour
     //사다리 구현
     void Climbing()
     {
-        if (isClimbing)
+        var leg = transform.position;
+        leg.y -= 0.3f;
+
+        Ray ray = new Ray(leg,transform.forward);
+        RaycastHit hit;
+        int isStairs = LayerMask.GetMask("Stairs");
+        if(Physics.Raycast(ray,out hit,0.2f, isStairs))
         {
             transform.position += new Vector3(0, v * 0.01f, 0);
             rb.useGravity = false;
@@ -194,23 +200,10 @@ public class PlayerMove : MonoBehaviour
         {
             rb.useGravity = true;
         }
+       
 
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Stairs")
-        {
-            isClimbing = true;
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.tag == "Stairs")
-        {
-            isClimbing = false;
-        }
-    }
+    
     void setDown()
     {
         Vector3 ds = setdowncamera.transform.localPosition;

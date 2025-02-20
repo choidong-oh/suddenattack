@@ -1,11 +1,14 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyAi : MonoBehaviour, IDamageable
 {
-    public float enemyHp = 100;
+    int enemyHp = 1000;
     Animator animator;
+
+    //이벤트//걍 인트받는 델리게이트
+    public event Action<int> OnHealthChanged;
 
     private void Start()
     {
@@ -15,7 +18,10 @@ public class EnemyAi : MonoBehaviour, IDamageable
     public void GetDamge(int damage)
     {
         enemyHp -= damage;
-        Debug.Log(enemyHp);
+
+        //이벤트
+        OnHealthChanged?.Invoke(enemyHp);
+
         StartCoroutine(hit());
         if(enemyHp < 0)
         {
