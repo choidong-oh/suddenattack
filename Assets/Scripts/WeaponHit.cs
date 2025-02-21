@@ -27,7 +27,7 @@ public class WeaponHit : MonoBehaviour, IDamageable
 
     //¿Ã∫•∆Æ ui
     public event Action<int,int> OnWeaponAmmo;
-    public event Action OnShoot;
+    public event Action<bool> OnShoot;
 
 
     private void Start()
@@ -81,7 +81,7 @@ public class WeaponHit : MonoBehaviour, IDamageable
             else if (ammoCount >= 1)
             {
                 //UI ΩÙ
-                OnShoot?.Invoke();
+                OnShoot?.Invoke(true);
 
                 //ray = new Ray(raygameobj.transform.position+Random.onUnitSphere, transform.forward);
                 ammoCount--;
@@ -113,7 +113,7 @@ public class WeaponHit : MonoBehaviour, IDamageable
 
         }
 
-      
+
     }
 
     IEnumerator Reload()

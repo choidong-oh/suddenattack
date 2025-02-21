@@ -4,11 +4,26 @@ using UnityEngine;
 
 public class EnemyAi : MonoBehaviour, IDamageable
 {
-    int enemyHp = 1000;
+    public int enemyHp = 1000;
     Animator animator;
+
+    public  int EnemyHp
+    {
+        get { return enemyHp; }
+        set
+        {
+            enemyHp = value;
+            if (enemyHp <= 0)
+            {
+                enemyHp = 0;
+            }
+        }
+    }
 
     //이벤트//걍 인트받는 델리게이트
     public event Action<int> OnHealthChanged;
+
+
 
     private void Start()
     {
@@ -17,15 +32,15 @@ public class EnemyAi : MonoBehaviour, IDamageable
 
     public void GetDamge(int damage)
     {
-        enemyHp -= damage;
+        EnemyHp -= damage;
 
         //이벤트
-        OnHealthChanged?.Invoke(enemyHp);
+        OnHealthChanged?.Invoke(EnemyHp);
 
         StartCoroutine(hit());
-        if(enemyHp < 0)
+        if(EnemyHp <= 0)
         {
-            enemyHp = 0;
+            EnemyHp = 0;
             Destroy(gameObject);    
         }
 

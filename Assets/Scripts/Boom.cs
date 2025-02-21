@@ -5,8 +5,6 @@ using UnityEngine;
 public class Boom : MonoBehaviour
 {
     Rigidbody rb;
-    public GameObject playpo;
-    float gravite = -9.81f;
     Vector3 velocity;
     bool isGrounded = false;
 
@@ -15,7 +13,6 @@ public class Boom : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         rb.constraints = RigidbodyConstraints.FreezeAll;
-        gravite = Physics.gravity.y;
     }
     private void Update()
     {
@@ -27,26 +24,20 @@ public class Boom : MonoBehaviour
         CheckGrounded();
         //gravite2();
     }
+    Vector3 throwDirection;
     void ThrowGrenade()
     {
         transform.parent = null;
         //velocity.y = gravite * Time.deltaTime;
         //transform.position += velocity;
         rb.constraints = (RigidbodyConstraints)0;
-        Vector3 throwDirection = Camera.main.transform.forward;
-        rb.AddForce(throwDirection*30, ForceMode.Impulse);
+        throwDirection = Camera.main.transform.forward;
+        rb.AddForce(throwDirection *1300);
         rb.useGravity = true;
         //StartCoroutine(boomWait());
     }
-    void gravite2()
-    {
-        if (!isGrounded)
-        {
-            velocity.y += gravite * Time.deltaTime;
-        }
-        transform.position += velocity * Time.deltaTime;
-    }
-
+    
+   
 
     private void CheckGrounded()
     {
@@ -58,19 +49,9 @@ public class Boom : MonoBehaviour
     }
     IEnumerator boomWait()
     {
-        yield return new WaitForSeconds(1f);
-
-        var ds = rb.velocity;
-        ds.y = -1f;
-        rb.velocity = ds;
-
-
-
-        //rb.velocity = new Vector3(0, gravite*1.5f * Time.deltaTime, 0);
-        Debug.Log(rb.velocity);
-
 
         yield return new WaitForSeconds(3f);
+
         //Destroy(gameObject);
     }
 
