@@ -67,7 +67,7 @@ public class Boom : MonoBehaviour, IDamageable
     {
         //Instantiate(explodePrefab, transform.position, Quaternion.identity);
         RaycastHit[] hits = Physics.SphereCastAll(transform.position,3,Vector3.up,0f,LayerMask.GetMask("Enemy"));
-        GameObject fish = Instantiate(explodePrefab) as GameObject;
+        GameObject fish = Instantiate(explodePrefab);
         fish.transform.SetParent(transform, false);
         //Instantiate(explodePrefab,transform.position, Quaternion.identity); 
         foreach (var hitobj in hits)
