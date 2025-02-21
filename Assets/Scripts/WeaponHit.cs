@@ -29,6 +29,11 @@ public class WeaponHit : MonoBehaviour, IDamageable
     public event Action<int,int> OnWeaponAmmo;
     public event Action<bool> OnShoot;
 
+    //오브젝트 풀링
+    GameObject[] bloodPrefabPool;
+    int poolCount = 0;
+
+
 
     private void Start()
     {
@@ -40,6 +45,16 @@ public class WeaponHit : MonoBehaviour, IDamageable
             uiCrossHairstartPos[i] = uiCrossHairTr[i]!.anchoredPosition;
         }
         startTransform = transform.localPosition;
+
+        //오브젝트 풀링
+        bloodPrefabPool = new GameObject[10];
+        for (int i = 0; i < bloodPrefabPool.Length; i++)
+        {
+            bloodPrefabPool[i] = Instantiate(bloodPrefab);
+            bloodPrefabPool[i].SetActive(false);
+             
+        }
+        
     }
     void Reset()
     {
@@ -90,8 +105,12 @@ public class WeaponHit : MonoBehaviour, IDamageable
                 {
                     var enemy = hit.collider.gameObject.GetComponent<IDamageable>();
                     enemy.GetDamge(weaponpower);
-                    Instantiate(bloodPrefab, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
+                    //Instantiate(bloodPrefabPool[poolCount], hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
+                    bloodPrefabPool[poolCount].transform.position = hit.point;
+                    bloodPrefabPool[poolCount].transform.rotation = Quaternion.FromToRotation(Vector3.up,hit.normal);
 
+                    bloodPrefabPool[poolCount].SetActive(true);
+                    poolCount++;
                 }
                 else if (Physics.Raycast(ray, out hit, 100f, GetMask))
                 {
@@ -163,6 +182,9 @@ public class WeaponHit : MonoBehaviour, IDamageable
 
     }
 
-    
-
+    public void resetCount()
+    {
+        poolCount--;
+        Debug.Log(poolCount);
+    }
 }

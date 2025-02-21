@@ -1,14 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+
+interface IPooling
+{
+    void resetCount();
+}
+
 
 public class WaitDestory : MonoBehaviour
 {
-    private void Start()
+    public void resetCount()
     {
-        Destroy(gameObject,2f);
+    }
+
+   
+    IEnumerator timeDlay()
+    {
+        yield return new WaitForSeconds(2f);
+        gameObject.SetActive(false);
+    }
+
+    //Ç®¸µ
+    private void OnDisable()
+    {
+        FindObjectOfType<WeaponHit>().resetCount();
+    }
+    private void OnEnable()
+    {
+        StartCoroutine(timeDlay());
     }
 
 
-
 }
+
