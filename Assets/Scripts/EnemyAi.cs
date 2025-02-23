@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class EnemyAi : MonoBehaviour, IDamageable
 {

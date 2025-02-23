@@ -4,6 +4,14 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+//질문
+//1. FindObjectOfType, FindAnyObjectByType 무슨원리인지
+//2. 풀링여러개는 아직 생각해보고
+//3. 마우스? 움직임이 렉걸림?
+
+
+
+
 public class test1 : MonoBehaviour
 {
     public float turnSpeed = 4.0f;    

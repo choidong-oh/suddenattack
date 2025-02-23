@@ -15,10 +15,12 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         //enemy 피체크
-        FindObjectOfType<EnemyAi>().OnHealthChanged += UpdateHealthUI;
+        //UNITY에서 FindObjectOfType쓰지말래 느리대
+        //FindObjectOfType<EnemyAi>().OnHealthChanged += UpdateHealthUI;
+        FindAnyObjectByType<EnemyAi>().OnHealthChanged += UpdateHealthUI;
 
         //Player탄창
-        weaponHit = FindObjectOfType<WeaponHit>();
+        weaponHit = FindAnyObjectByType<WeaponHit>();
         weaponHit.OnWeaponAmmo += UpdateWeaponAmmoUI;
 
         //크로스헤어
@@ -97,9 +99,9 @@ public class UIManager : MonoBehaviour
 
   
 
-    void UpdateHealthUI(int newHealth)
+    void UpdateHealthUI(int Hp)
     {
-        EnemyHpText.text = "Enemy HP: " + newHealth;
+        EnemyHpText.text = "Enemy HP: " + Hp;
     }
     void UpdateWeaponAmmoUI(int ammo,int maxAmmo)
     {

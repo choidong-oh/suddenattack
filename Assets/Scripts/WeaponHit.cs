@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 using UnityEngine.UI;
 
 public class WeaponHit : MonoBehaviour, IDamageable
@@ -29,7 +31,9 @@ public class WeaponHit : MonoBehaviour, IDamageable
     public event Action<int,int> OnWeaponAmmo;
     public event Action<bool> OnShoot;
 
-   
+    //풀링
+    IObjectPool<Bullet> weponPool;
+    IObjectPool<Bullet> weponPool2;
 
     private void Start()
     {
@@ -44,6 +48,38 @@ public class WeaponHit : MonoBehaviour, IDamageable
 
         
     }
+
+    private void Awake()
+    {
+        weponPool = new ObjectPool<Bullet>(
+            () => inst(bloodPrefab),
+            bullet => bullet.gameObject.SetActive(true),
+            bullet => bullet.gameObject.SetActive(false),
+            bullet => Destroy(bullet.gameObject),
+            maxSize: 20);
+        weponPool2 = new ObjectPool<Bullet>(
+          () => inst2(wallPrefab),
+          bullet => bullet.gameObject.SetActive(true),
+          bullet => bullet.gameObject.SetActive(false),
+          bullet => Destroy(bullet.gameObject),
+          maxSize: 20);
+    }
+ 
+
+    Bullet inst(GameObject prefab)
+    {
+        Bullet bullet = Instantiate(prefab).GetComponent<Bullet>();
+        bullet.setPool(weponPool);
+        return bullet;
+    }
+    Bullet inst2(GameObject prefab)
+    {
+        Bullet bullet = Instantiate(prefab).GetComponent<Bullet>();
+        bullet.setPool(weponPool2);
+        return bullet;
+    }
+   
+
     void Reset()
     {
         ammo = 30;
@@ -59,7 +95,6 @@ public class WeaponHit : MonoBehaviour, IDamageable
     {
         //총알 ui//근데 애는 업데이트에 계속 하면 뭔의미냐 생각해볼수있도록 ?????
         OnWeaponAmmo?.Invoke(ammoCount, maxAmmo);
-
 
 
         Ray ray = new Ray(raygameobj.transform.position, transform.forward); //진짜 레이
@@ -93,14 +128,23 @@ public class WeaponHit : MonoBehaviour, IDamageable
                 {
                     var enemy = hit.collider.gameObject.GetComponent<IDamageable>();
                     enemy.GetDamge(weaponpower);
-                    Instantiate(bloodPrefab, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
-                   
+                    //var dd =   Instantiate(bloodPrefab, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
+
+                    //풀링
+                    var dd = weponPool.Get();
+                    dd.transform.position = hit.point;
+                    dd.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
+                    dd.poolShoot();
+
+
                 }
                 else if (Physics.Raycast(ray, out hit, 100f, GetMask))
                 {
-                    var asd = hit.collider.transform.rotation;
-
-                    Instantiate(wallPrefab, hit.point - Vector3.forward * 0.1f, Quaternion.FromToRotation(Vector3.back, hit.normal));
+                    //Instantiate(wallPrefab, hit.point - Vector3.forward * 0.1f, Quaternion.FromToRotation(Vector3.back, hit.normal));
+                    var dd = weponPool2.Get();
+                    dd.transform.position = hit.point - Vector3.forward * 0.1f;
+                    dd.transform.rotation = Quaternion.FromToRotation(Vector3.back, hit.normal);
+                    dd.poolShoot();
 
 
                 }
@@ -108,7 +152,7 @@ public class WeaponHit : MonoBehaviour, IDamageable
                 //cam.transform.localRotation  = Quaternion.Euler(-0.1f, 0, 0);
 
 
-
+                //총 머즐 프리팹
                 StartCoroutine(EffactTimedelay());
 
             }
@@ -132,6 +176,7 @@ public class WeaponHit : MonoBehaviour, IDamageable
         isReload = true;
     }
 
+    //총 머즐 프리팹
     IEnumerator EffactTimedelay()
     {
         EffactPrefab.SetActive(true);

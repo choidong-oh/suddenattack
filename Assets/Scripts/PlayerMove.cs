@@ -37,7 +37,7 @@ public class PlayerMove : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();            
 
-        cam = Camera.main;                          
+        cam = Camera.main;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
@@ -69,7 +69,7 @@ public class PlayerMove : MonoBehaviour
             StartCoroutine(RotateSmoothly(-1f,0.1f));
         }
 
-        //마우스회전//자유시점인지
+        //마우스회전//자유시점인지 아닌지
         if (isFreeView == false)
         {
             Rotate();
@@ -256,15 +256,15 @@ public class PlayerMove : MonoBehaviour
     void Rotate()
     {
         float mouseX = Input.GetAxisRaw("Mouse X") * mouseSpeed*0.01f;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * mouseSpeed * 0.01f;
+        float mouseY = Input.GetAxisRaw("Mouse Y") * mouseSpeed *0.01f;
 
         yRotation += mouseX;    
         xRotation -= mouseY;   
 
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);  // 수직 회전 값을 -90도에서 90도 사이로 제한
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        transform.rotation = Quaternion.Euler(0, yRotation, 0);
 
-        cam.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0); // 카메라의 회전을 조절
-        transform.rotation = Quaternion.Euler(0, yRotation, 0);             // 플레이어 캐릭터의 회전을 조절
+        cam.transform.localRotation = Quaternion.Euler(xRotation, 0, 0); 
 
 
     }
