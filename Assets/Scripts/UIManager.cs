@@ -4,23 +4,23 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public Text EnemyHpText;
+    //UI텍스트
+    [SerializeField] private Text EnemyHpText;
+    [SerializeField] private Text WeaponAmmoText;
 
-    public Text WeaponAmmoText;
-
-    public RectTransform[] CrossHair;
+    [SerializeField] private RectTransform[] CrossHair;
     Vector2[] CrossHairTr;
 
-    WeaponHit weaponHit;
+    //스크립트 달려있는거 넣어야함
+    [SerializeField] private EnemyAi enemyAi;
+    [SerializeField] private WeaponHit weaponHit;
+
     void Start()
     {
         //enemy 피체크
-        //UNITY에서 FindObjectOfType쓰지말래 느리대
-        //FindObjectOfType<EnemyAi>().OnHealthChanged += UpdateHealthUI;
-        FindAnyObjectByType<EnemyAi>().OnHealthChanged += UpdateHealthUI;
+        enemyAi.OnHealthChanged += UpdateHealthUI;
 
         //Player탄창
-        weaponHit = FindAnyObjectByType<WeaponHit>();
         weaponHit.OnWeaponAmmo += UpdateWeaponAmmoUI;
 
         //크로스헤어
@@ -28,14 +28,7 @@ public class UIManager : MonoBehaviour
         CrossHairStartValue();
         weaponHit.OnShoot += UpdateCrossHair;
 
-        //람다식 
-        //FindObjectOfType<EnemyAi>().OnHealthChanged += (newHealth) =>
-        //{
-        //    EnemyHpText.text = "Enemy HP: " + newHealth;
-        //};
-
     }
-
     //애는 인자값 안넣어보자
     void UpdateCrossHair(bool isShoot)
     {

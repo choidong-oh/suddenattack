@@ -37,6 +37,7 @@ public class WeaponHit : MonoBehaviour, IDamageable
 
     private void Start()
     {
+        ds
         uiCrossHairstartPos = new Vector2[4];
         animator = GetComponent<Animator>();
         Reset();
