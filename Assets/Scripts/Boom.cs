@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Boom : MonoBehaviour, IDamageable
@@ -28,6 +29,12 @@ public class Boom : MonoBehaviour, IDamageable
         CheckGrounded();
         //gravite2();
     }
+
+    void OnEnable()
+    {
+        gameObject.SetActive(true   );
+    }
+
     Vector3 throwDirection;
     void ThrowGrenade()
     {
@@ -36,8 +43,8 @@ public class Boom : MonoBehaviour, IDamageable
         //transform.position += velocity;
         rb.constraints = (RigidbodyConstraints)0;
         throwDirection = Camera.main.transform.forward;
-        //rb.AddForce(throwDirection *1300);
-        rb.AddForce(throwDirection *10);
+        rb.AddForce(throwDirection *1300);
+        //rb.AddForce(throwDirection *10);
         rb.useGravity = true;
         StartCoroutine(boomWait());
     }

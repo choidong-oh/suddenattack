@@ -39,30 +39,45 @@ public class inventory : MonoBehaviour
 
     void defalut()
     {
+       
         ak47.SetActive(true);
         deagle.SetActive(false);
-        boom.SetActive(false);
+        if (boom != null)
+        {
+            boom?.SetActive(false);
+        }
     }
 
     void Ak47()
     {
         ak47.SetActive(true);
         deagle.SetActive(false);
-        boom.SetActive(false);
+        if (boom != null)
+        {
+            boom?.SetActive(false);
+        }
     }
 
     void Deagle()
     {
+        var ds = deagle.GetComponent<WeaponDeagle>();
+        ds.enabled = true;
         ak47.SetActive(false);
         deagle.SetActive(true);
-        boom.SetActive(false);
+        if (boom != null)
+        {
+            boom?.SetActive(false);
+        }
     }
 
     void Boom()
     {
         ak47.SetActive(false);
         deagle.SetActive(false);
-        boom.SetActive(true);
+        if (boom != null)
+        {
+            boom?.SetActive(true);
+        }
     }
 
 

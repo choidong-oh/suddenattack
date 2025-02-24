@@ -13,7 +13,8 @@ public class UIManager : MonoBehaviour
 
     //스크립트 달려있는거 넣어야함
     [SerializeField] private EnemyAi enemyAi;
-    [SerializeField] private WeaponHit weaponHit;
+    [SerializeField] private WeaponAK47 weaponAK47;
+    [SerializeField] private WeaponDeagle weaponDeagle;
 
     void Start()
     {
@@ -21,13 +22,24 @@ public class UIManager : MonoBehaviour
         enemyAi.OnHealthChanged += UpdateHealthUI;
 
         //Player탄창
-        weaponHit.OnWeaponAmmo += UpdateWeaponAmmoUI;
+        weaponAK47.OnAk47Ammo += UpdateWeaponAmmoUI;
+        weaponDeagle.OnDeagleAmmo += UpdateWeaponAmmoUI;
 
-        //크로스헤어
         //Player가 쏘고있는지
         CrossHairStartValue();
-        weaponHit.OnShoot += UpdateCrossHair;
+        weaponAK47.OnAk47Shoot += UpdateCrossHair;
+        weaponDeagle.OnDeagleShoot += UpdateCrossHair;
 
+    }
+    private void OnEnable()
+    {
+        
+
+
+    }
+    private void OnDisable()
+    {
+        
     }
     //애는 인자값 안넣어보자
     void UpdateCrossHair(bool isShoot)

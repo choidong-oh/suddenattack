@@ -5,11 +5,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    //스크립트 달려있는거 넣어야함
-    [SerializeField] private EnemyAi enemyAi;
-    [SerializeField] private WeaponHit weaponHit;
-
-    [SerializeField] private inventory inventory;
     public event Action<int> OnChangeWeapon;
 
 

@@ -7,16 +7,14 @@ using UnityEngine.UI;
 
 public class WeaponHit : MonoBehaviour, IDamageable
 {
-    public LayerMask GetMask;
+    [SerializeField] private LayerMask GetMask;
     Animator animator;
-    public GameObject raygameobj;
-    public GameObject EffactPrefab;
-    public GameObject bloodPrefab;
-    public GameObject wallPrefab;
+    [SerializeField] private GameObject raygameobj;
+    [SerializeField] private GameObject EffactPrefab;
+    [SerializeField] private GameObject bloodPrefab;
+    [SerializeField] private GameObject wallPrefab;
 
-    public RectTransform[] uiCrossHairTr;
-    Vector2[] uiCrossHairstartPos;
-
+   
     int weaponpower = 43; 
     int maxAmmo;//ÃÑÅºÃ¢°³¼ö270
     int ammo;//ÇÑÅºÃ¢
@@ -25,7 +23,7 @@ public class WeaponHit : MonoBehaviour, IDamageable
     bool isReload =true;
 
     Vector3 startTransform;
-    public GameObject cam;
+    [SerializeField] private GameObject cam;
 
     //ÀÌº¥Æ® ui
     public event Action<int,int> OnWeaponAmmo;
@@ -35,16 +33,14 @@ public class WeaponHit : MonoBehaviour, IDamageable
     IObjectPool<Bullet> weponPool;
     IObjectPool<Bullet> weponPool2;
 
+
+  
     private void Start()
     {
-        ds
-        uiCrossHairstartPos = new Vector2[4];
+       
         animator = GetComponent<Animator>();
         Reset();
-        for (int i = 0; i < uiCrossHairTr.Length; i++)
-        {
-            uiCrossHairstartPos[i] = uiCrossHairTr[i]!.anchoredPosition;
-        }
+       
         startTransform = transform.localPosition;
 
         
