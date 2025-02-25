@@ -7,9 +7,7 @@ using UnityEngine.Audio;
 
 public class SoundManager : MonoBehaviour
 {
-    public AudioMixer audioMixer1;
-    public AudioMixer audioMixer2;
-    public AudioMixer audioMixer3;
+    public AudioMixer audioMixer;
     public Slider audioSlider1;
     public Slider audioSlider2;
     public Slider audioSlider3;
@@ -20,11 +18,11 @@ public class SoundManager : MonoBehaviour
 
         if(volum == -40)
         {
-            audioMixer1.SetFloat("Master", -80f);
+            audioMixer.SetFloat("Master", -80f);
         }
         else
         {
-            audioMixer1.SetFloat("Master", volum);
+            audioMixer.SetFloat("Master", volum);
         }
     }
 
@@ -34,12 +32,12 @@ public class SoundManager : MonoBehaviour
 
         if (volum == -40)
         {
-            audioMixer2.SetFloat("BGM", -80f);
+            audioMixer.SetFloat("BGM", -80f);
         }
         else
         {
 
-            audioMixer2.SetFloat("BGM", volum);
+            audioMixer.SetFloat("BGM", volum);
 
         }
     }
@@ -51,11 +49,11 @@ public class SoundManager : MonoBehaviour
 
         if (volum == -40)
         {
-            audioMixer3.SetFloat("SFX", -80f);
+            audioMixer.SetFloat("SFX", -80f);
         }
         else
         {
-            audioMixer3.SetFloat("SFX", volum);
+            audioMixer.SetFloat("SFX", volum);
         }
     }
 

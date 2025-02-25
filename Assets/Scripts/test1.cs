@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using UnityEngine;
-using UnityEngine.UIElements;
+
+
 
 //질문
 //1. FindObjectOfType, FindAnyObjectByType 무슨원리인지
@@ -10,8 +13,8 @@ using UnityEngine.UIElements;
 
 //할거
 //기능구현 이제 안함
-//3. 대충 처음씬 => 로딩씬 => 메인 => 상점,인게임씬 => 종료씬(메인씬)
-//4. 사운드 추가, 그리고 헤드샷더블킬울트라킬 구현
+//4. 사운드 추가,( 발소리,  권총, 폭탄)
+//5. 헤드샷더블킬울트라킬 구현
 //6. 상점구현
 
 
@@ -19,25 +22,23 @@ using UnityEngine.UIElements;
 
 public class test1 : MonoBehaviour
 {
-    public float turnSpeed = 4.0f;    
-    private float xRotate = 0.0f;
-    public float moveSpeed = 4.0f; 
-
-    void Update()
+    private void ChangeLoading()
     {
-        float yRotateSize = Input.GetAxis("Mouse X") * turnSpeed;
-        float yRotate = transform.eulerAngles.y + yRotateSize;
-
-        float xRotateSize = -Input.GetAxis("Mouse Y") * turnSpeed;
-        xRotate = Mathf.Clamp(xRotate + xRotateSize, -45, 80);
-
-        transform.eulerAngles = new Vector3(xRotate, yRotate, 0);
-
-        Vector3 move =
-            transform.forward * Input.GetAxis("Vertical") +
-            transform.right * Input.GetAxis("Horizontal");
-
-        transform.position += move * moveSpeed * Time.deltaTime;
+        SceneManager.LoadScene("suddenLoading");
     }
+
+    private void ChangeMain()
+    {
+        SceneManager.LoadScene("suddenMain");
+    }
+
+    private void ChangeStart()
+    {
+        SceneManager.LoadScene("suddenStart");
+    }
+
+
+   
+
 
 }

@@ -30,6 +30,10 @@ public class PlayerMove : MonoBehaviour
     Collider coll;
     public bool isFreeView = false;
 
+    //오디오
+    public AudioSource audioSource;
+    public AudioClip JumpAudio;
+
 
 
     void Start()
@@ -214,6 +218,7 @@ public class PlayerMove : MonoBehaviour
 
     void Jump()
     {
+        audioSource.PlayOneShot(JumpAudio);
         rb.velocity = Vector3.zero;
         Physics.gravity = new Vector3(0, -40.0F, 0);
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse); // 힘을 가해 점프

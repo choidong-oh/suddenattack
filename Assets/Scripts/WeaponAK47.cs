@@ -10,20 +10,18 @@ public class WeaponAK47 : Weapon
     public event Action<int, int> OnAk47Ammo;
     public event Action<bool> OnAk47Shoot;
 
+    public Transform backShoot;
 
     public AudioSource audioSource;
     public AudioClip shoot;
     public AudioClip[] reload;
 
-    public void PlayEffect()
-    {
-        audioSource.PlayOneShot(shoot);
-    }
+   
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
         Reset();
-        startTransform = transform.localPosition;
+        startTransform = backShoot.transform.localPosition;
     }
 
     private void Update()
@@ -52,7 +50,7 @@ public class WeaponAK47 : Weapon
             {
                 //UI 쏨
                 OnAk47Shoot?.Invoke(true);
-
+                audioSource.PlayOneShot(shoot);
                 //ray = new Ray(raygameobj.transform.position+Random.onUnitSphere, transform.forward);
                 ammoCount--;
                 //Raycast(발사할 레이, 충돌 정보 저장할 변수, 최대거리, 감지하고자 하는 레이어)
@@ -87,9 +85,9 @@ public class WeaponAK47 : Weapon
                 //총 머즐 프리팹
                 StartCoroutine(EffactTimedelay());
                 //PlayEffect();
+                //총쏘는 애니메이션
+                StartCoroutine(Shootwait(0.2f));
             }
-            //총쏘는 애니메이션
-            StartCoroutine(Shootwait(0.2f));
 
         }
 
@@ -124,13 +122,13 @@ public class WeaponAK47 : Weapon
     //총을 쏘면 뒤로 가는 반동처럼 보임
     protected IEnumerator Shootwait(float duration)
     {
-        Vector3 targetPos = transform.localPosition;
+        Vector3 targetPos = backShoot.transform.localPosition;
         targetPos.z -= 0.1f;
-        transform.localPosition = targetPos;
+        backShoot.transform.localPosition = targetPos;
 
         yield return new WaitForSeconds(0.1f);
 
-        transform.localPosition = startTransform;
+        backShoot.transform.localPosition = startTransform;
 
         yield return null;
 

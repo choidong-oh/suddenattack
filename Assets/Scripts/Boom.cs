@@ -13,6 +13,11 @@ public class Boom : MonoBehaviour, IDamageable
     public LayerMask toExplode;
     int boomDagage = 1000;
 
+    //¿Àµð¿À
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip ShootStart;
+    [SerializeField] private AudioClip ShootEnd;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -38,6 +43,7 @@ public class Boom : MonoBehaviour, IDamageable
     Vector3 throwDirection;
     void ThrowGrenade()
     {
+        audioSource.PlayOneShot(ShootStart);
         transform.parent = null;
         //velocity.y = gravite * Time.deltaTime;
         //transform.position += velocity;
@@ -64,7 +70,7 @@ public class Boom : MonoBehaviour, IDamageable
 
         yield return new WaitForSeconds(3f);
         Explode();
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }
 
@@ -72,6 +78,7 @@ public class Boom : MonoBehaviour, IDamageable
 
     void Explode()
     {
+        audioSource.PlayOneShot(ShootEnd);
         //Instantiate(explodePrefab, transform.position, Quaternion.identity);
         RaycastHit[] hits = Physics.SphereCastAll(transform.position,3,Vector3.up,0f,LayerMask.GetMask("Enemy"));
         GameObject fish = Instantiate(explodePrefab);

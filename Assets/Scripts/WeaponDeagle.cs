@@ -10,6 +10,12 @@ public class WeaponDeagle : Weapon
     public event Action<int, int> OnDeagleAmmo;
     public event Action<bool> OnDeagleShoot;
 
+    //오디오
+    public AudioSource audioSource;
+    public AudioClip shoot;
+    public AudioClip[] reload;
+
+    public float testflot;
 
     private void Start()
     {
@@ -83,7 +89,7 @@ public class WeaponDeagle : Weapon
                 StartCoroutine(EffactTimedelay());
 
                 //총쏘는 애니메이션
-                StartCoroutine(ShootWait(0.6f));
+                StartCoroutine(ShootWait(testflot));
 
             }
 
@@ -91,7 +97,15 @@ public class WeaponDeagle : Weapon
 
 
     }
+    public void ShootSound()
+    {
+        audioSource.PlayOneShot(shoot);
+    }
 
+    public void ReloadSound(int index)
+    {
+        audioSource.PlayOneShot(reload[index]);
+    }
     void OnEnable()
     {
         canShoot = true; //쏠수있는지
@@ -113,6 +127,19 @@ public class WeaponDeagle : Weapon
         yield return new WaitForSeconds(second);
         canShoot = true;
     }
+    protected override IEnumerator Reload()
+    {
+        Debug.Log("r키");
+        isReload = false;
+        animator.SetTrigger("Reload");
+        canShoot = false;
+        yield return new WaitForSeconds(1.8f);
+        canShoot = true;
+        maxAmmo -= (ammo - ammoCount);
+        ammoCount = ammo;
+        isReload = true;
+    }
+
     IEnumerator test()
     {
         yield return new WaitForSeconds(1);

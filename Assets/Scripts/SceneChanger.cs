@@ -23,6 +23,24 @@ public class SceneChanger : MonoBehaviour
     {
         StartCoroutine(Loading());
     }
+    public void ChangeLoading()
+    {
+        SceneManager.LoadScene("suddenLoading");
+    }
+
+    public void ChangeMain()
+    {
+        SceneManager.LoadScene("suddenMain");
+    }
+
+    public void ChangeStart()
+    {
+        SceneManager.LoadScene("suddenStart");
+    }
+
+   
+
+
 
     public void Change()
     {
