@@ -8,7 +8,6 @@ public class SceneChanger : MonoBehaviour
 {
     [SerializeField] private Image image;
     [SerializeField] private Slider slider;
-
     //private void OnGUI()
     //{
     //    if (GUI.Button(new Rect(20, 40, 400, 300), "¾À ·Îµù"))
@@ -19,6 +18,9 @@ public class SceneChanger : MonoBehaviour
 
 
     //}
+
+   
+
     private void Start()
     {
         StartCoroutine(Loading());
