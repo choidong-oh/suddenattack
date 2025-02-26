@@ -25,16 +25,19 @@ public class SceneChanger : MonoBehaviour
     }
     public void ChangeLoading()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("suddenLoading");
     }
 
     public void ChangeMain()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("suddenMain");
     }
 
     public void ChangeStart()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("suddenStart");
     }
 
@@ -44,6 +47,7 @@ public class SceneChanger : MonoBehaviour
 
     public void Change()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("suddenLoading");
     }
     IEnumerator Loading()

@@ -17,6 +17,14 @@ public class GameManager : MonoBehaviour
     public event Action OnSetDownBack;
     public event Action<bool> OnMove;
     [SerializeField] private GameObject uiSetting;
+    [SerializeField] private GameObject uiSound;
+    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private GameObject player;
+
+    private void Start()
+    {
+        Time.timeScale = 1.0f;  
+    }
 
     private void Update()
     {
@@ -98,6 +106,16 @@ public class GameManager : MonoBehaviour
             Cursor.visible = true;
 
         }
+
+        //시간이없는 관계로 여기서 하자
+        if (Input.GetKeyDown((KeyCode.Insert)))
+        {
+            var po = player.transform.position;
+            po.y = -11.345f;
+            //생성
+            Instantiate(enemyPrefab, po, Quaternion.identity);
+        }
+
     }
 
 
@@ -125,6 +143,10 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
     }
 
+    public void SoundSetactive(bool setactive)
+    {
+        uiSound.SetActive(setactive);
+    }
 
 
 }

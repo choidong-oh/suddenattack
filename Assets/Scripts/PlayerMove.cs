@@ -90,6 +90,7 @@ public class PlayerMove : MonoBehaviour
     //    //}
     //}
 
+
     void StartResetPoition()
     {
         transform.position = new Vector3(5, -11, -5);
@@ -119,7 +120,10 @@ public class PlayerMove : MonoBehaviour
     //반동처럼
     private void RotateUP()
     {
-        StartCoroutine(RotateSmoothly(-1f, 0.1f));
+        if (Time.timeScale > 0)
+        {
+            StartCoroutine(RotateSmoothly(-1f, 0.1f));
+        }
     }
 
     //반동처럼 보이기
@@ -290,17 +294,21 @@ public class PlayerMove : MonoBehaviour
 
     void Rotate()
     {
-        float mouseX = Input.GetAxisRaw("Mouse X") * mouseSpeed*0.1f;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * mouseSpeed *0.1f;
+        if (Time.timeScale > 0)
+        {
 
-        yRotation += mouseX;    
-        xRotation -= mouseY;   
+            float mouseX = Input.GetAxisRaw("Mouse X") * mouseSpeed * 0.1f;
+            float mouseY = Input.GetAxisRaw("Mouse Y") * mouseSpeed * 0.1f;
 
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-        transform.rotation = Quaternion.Euler(0, yRotation, 0);
+            yRotation += mouseX;
+            xRotation -= mouseY;
 
-        cam.transform.localRotation = Quaternion.Euler(xRotation, 0, 0); 
+            xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+            transform.rotation = Quaternion.Euler(0, yRotation, 0);
 
+            cam.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
+
+        }
 
     }
 
