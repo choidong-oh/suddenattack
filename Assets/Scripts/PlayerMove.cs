@@ -36,6 +36,8 @@ public class PlayerMove : MonoBehaviour
 
     [SerializeField] private GameManager gameManager;
 
+    Vector3 sdsds;
+
 
     void Start()
     {
@@ -60,57 +62,33 @@ public class PlayerMove : MonoBehaviour
         gameManager.OnFreeView += IsFreeMove;
         gameManager.OnHome += StartResetPoition;
         gameManager.OnJump += Isjump;
+        gameManager.OnMove += NomalMove;
+        gameManager.OnSetDown += setDown;
+        gameManager.OnSetDownBack += setDown1;
+        sdsds = cam.transform.localPosition;
+        sdsds.y -= 0.3f;
 
     }
    
 
 
-    void FixedUpdate()
-    {
-        //사다리 구현
-        Climbing();
-        
+    //void FixedUpdate()
+    //{
+    //    ////사다리 구현
+    //    //Climbing();
+       
+    //    //if (Input.GetKeyUp((KeyCode.LeftControl)))
+    //    //{
+    //    //    isSitDown = false;
+    //    //    float time1 = 0;
+    //    //    while (time1 < 1f)
+    //    //    {
+    //    //        time1 += Time.deltaTime;
+    //    //        setdowncamera.transform.localPosition = Vector3.Lerp(setdowncamera.transform.localPosition, startVector, time1 / 1f);
+    //    //    }
 
-        //앉기
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            isSitDown = true;
-            setDown();
-        }
-        else if (Input.GetKeyUp((KeyCode.LeftControl)))
-        {
-            isSitDown = false;
-            float time1 = 0;
-            while (time1 < 1f)
-            {
-                time1 += Time.deltaTime;
-                setdowncamera.transform.localPosition = Vector3.Lerp(setdowncamera.transform.localPosition, startVector, time1 / 1f);
-            }
-
-        }
-
-        //이동 구현
-        //자유시점
-        if (isFreeView == true)
-        {
-            FreeMove();
-        }
-        else if (isFreeView == false)
-        {
-            //천천히가기, 그냥가기
-            if (Input.GetKey(KeyCode.LeftShift) || isSitDown == true)
-            {
-                Move(0.5f);
-            }
-            else
-            {
-                Move(1f);
-
-            }
-        }
-
-
-    }
+    //    //}
+    //}
 
     void StartResetPoition()
     {
@@ -190,7 +168,18 @@ public class PlayerMove : MonoBehaviour
         Vector3 ds = setdowncamera.transform.localPosition;
         ds.y -= 0.3f;
 
-        setdowncamera.transform.localPosition = ds;
+        setdowncamera.transform.localPosition = sdsds;
+    }
+
+    void setDown1()
+    {
+        isSitDown = false;
+        float time1 = 0;
+        while (time1 < 1f)
+        {
+            time1 += Time.deltaTime;
+            setdowncamera.transform.localPosition = Vector3.Lerp(setdowncamera.transform.localPosition, startVector, time1 / 1f);
+        }
     }
 
     void Isjump()
@@ -223,6 +212,27 @@ public class PlayerMove : MonoBehaviour
         {
             PlayerSettingReset();
             isFreeView = false;
+        }
+
+    }
+    private void NomalMove(bool isSlow)
+    {
+        //이동 구현
+        //자유시점
+        if (isFreeView == true)
+        {
+            FreeMove();
+        }
+        else if (isFreeView == false)
+        {
+            if (isSlow == true)
+            {
+                Move(0.5f);
+            }
+            else
+            {
+                Move(1f);
+            }
         }
 
     }

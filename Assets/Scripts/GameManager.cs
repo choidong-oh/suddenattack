@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     public event Action OnFreeView;
     public event Action OnHome;
     public event Action OnJump;
+    public event Action OnSetDown;
+    public event Action OnSetDownBack;
+    public event Action<bool> OnMove;
     [SerializeField] private GameObject uiSetting;
 
     private void Update()
@@ -76,20 +79,51 @@ public class GameManager : MonoBehaviour
             OnRotateUp?.Invoke();
         }
 
+
+        if (Input.GetKey((KeyCode.LeftControl)))
+        {
+            OnSetDown?.Invoke();
+        }
+        else if (Input.GetKeyUp((KeyCode.LeftControl)))
+        {
+            OnSetDownBack?.Invoke();
+        }
+
         //설정esc
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            //Time.timeScale = 0f;
+            Time.timeScale = 0f;
             uiSetting.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
 
         }
+    }
 
 
+    private void FixedUpdate()
+    {
+
+        //그냥 움직임
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            OnMove?.Invoke(true);
+        }
+        else
+        {
+            OnMove?.Invoke(false);
+        }
 
     }
 
+
+    public void TimeScaleOne()
+    {
+        Time.timeScale = 1f;
+        uiSetting.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 
 
 
