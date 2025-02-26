@@ -8,7 +8,7 @@ public class PlayerMove : MonoBehaviour
 {
     Rigidbody rb;
 
-    public float mouseSpeed;
+    public float mouseSpeed = 3f;
     float yRotation;
     float xRotation;
     Camera cam;
@@ -34,6 +34,7 @@ public class PlayerMove : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip JumpAudio;
 
+    [SerializeField] private GameManager gameManager;
 
 
     void Start()
@@ -51,64 +52,17 @@ public class PlayerMove : MonoBehaviour
         //setdowncamera = GetComponent<GameObject>();
         startVector = setdowncamera.transform.localPosition;
         coll = GetComponent<Collider>();
-    }
-    private void Update()
-    {
-        //뒤돌기
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            Debug.Log("누름");
-            yRotation += 180;
-            if (yRotation >= 360)
-            {
-                yRotation -= 360;
-            }
-            transform.rotation = Quaternion.Euler(0, yRotation, 0);
 
-        }
-
-        //반동처럼//화면 올라감
-        if(Input.GetMouseButtonDown(0))
-        {
-            StartCoroutine(RotateSmoothly(-1f,0.1f));
-        }
-
-        //마우스회전//자유시점인지 아닌지
-        if (isFreeView == false)
-        {
-            Rotate();
-        }
-
-
-        //점프
-        isground = Physics.Raycast(transform.position, Vector3.down, 0.5f);
-        if (isground == true && Input.GetKeyDown(KeyCode.Space))
-        {
-            Jump();
-        }
-
-        //임시 게임매니저에서 하면 될듯
-        if (Input.GetKeyDown(KeyCode.PageDown))
-        {
-            if (isFreeView == false)
-            {
-                isFreeView = true;
-            }
-            else if(isFreeView == true)
-            {
-                PlayerSettingReset();
-                isFreeView = false;
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.Home))
-        {
-            Debug.Log("dsds");
-            transform.position = new Vector3(5, -11, -5);
-        }
-
+        gameManager.OnTurnBack += playerTurnBack;
+        gameManager.OnMouseSpeed += MouseSpeed;
+        gameManager.OnRotateUp += RotateUP;
+        gameManager.OnMouseRotate += NoFreeView;
+        gameManager.OnFreeView += IsFreeMove;
+        gameManager.OnHome += StartResetPoition;
+        gameManager.OnJump += Isjump;
 
     }
-    
+   
 
 
     void FixedUpdate()
@@ -158,6 +112,24 @@ public class PlayerMove : MonoBehaviour
 
     }
 
+    void StartResetPoition()
+    {
+        transform.position = new Vector3(5, -11, -5);
+    }
+
+
+
+    //뒤돌기
+    private void playerTurnBack()
+    {
+        yRotation += 180;
+        if (yRotation >= 360)
+        {
+            yRotation -= 360;
+        }
+        transform.rotation = Quaternion.Euler(0, yRotation, 0);
+    }
+
     //리셋
     private void PlayerSettingReset()
     {
@@ -166,6 +138,11 @@ public class PlayerMove : MonoBehaviour
         
     }
     
+    //반동처럼
+    private void RotateUP()
+    {
+        StartCoroutine(RotateSmoothly(-1f, 0.1f));
+    }
 
     //반동처럼 보이기
     IEnumerator RotateSmoothly(float rotationAmount, float duration)
@@ -216,6 +193,16 @@ public class PlayerMove : MonoBehaviour
         setdowncamera.transform.localPosition = ds;
     }
 
+    void Isjump()
+    { 
+        //점프
+        isground = Physics.Raycast(transform.position, Vector3.down, 0.5f);
+        if (isground == true )
+        {
+            Jump();
+        }
+
+    }
     void Jump()
     {
         audioSource.PlayOneShot(JumpAudio);
@@ -224,14 +211,31 @@ public class PlayerMove : MonoBehaviour
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse); // 힘을 가해 점프
     }
 
+    //자유시점 모드
+    void IsFreeMove()
+    {
+
+        if (isFreeView == false)
+        {
+            isFreeView = true;
+        }
+        else if (isFreeView == true)
+        {
+            PlayerSettingReset();
+            isFreeView = false;
+        }
+
+    }
+
+
     //자유시점 //Rotate(),move()꺼야댐
     void FreeMove()
     {
         rb.useGravity = false;
         coll.enabled = false;
 
-        float mouseX = Input.GetAxisRaw("Mouse X") * mouseSpeed * 0.01f;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * mouseSpeed * 0.01f;
+        float mouseX = Input.GetAxisRaw("Mouse X") * mouseSpeed * 0.1f;
+        float mouseY = Input.GetAxisRaw("Mouse Y") * mouseSpeed * 0.1f;
 
         yRotation += mouseX;
         xRotation -= mouseY;
@@ -246,7 +250,13 @@ public class PlayerMove : MonoBehaviour
         transform.position += move * 5 * Time.deltaTime;
 
     }
-    
+
+    //마우스 스피드 변경
+    void MouseSpeed(float speed)
+    {
+        Debug.Log("마우스");
+        mouseSpeed += speed;
+    }
 
     void Move(float slowspeed)
     {
@@ -258,10 +268,20 @@ public class PlayerMove : MonoBehaviour
 
     }
 
+    //자유시점 모드 아닌
+    void NoFreeView()
+    {
+        if (isFreeView == false)
+        {
+            Rotate();
+        }
+
+    }
+
     void Rotate()
     {
-        float mouseX = Input.GetAxisRaw("Mouse X") * mouseSpeed*0.01f;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * mouseSpeed *0.01f;
+        float mouseX = Input.GetAxisRaw("Mouse X") * mouseSpeed*0.1f;
+        float mouseY = Input.GetAxisRaw("Mouse Y") * mouseSpeed *0.1f;
 
         yRotation += mouseX;    
         xRotation -= mouseY;   

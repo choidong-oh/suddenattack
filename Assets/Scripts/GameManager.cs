@@ -6,10 +6,18 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public event Action<int> OnChangeWeapon;
-
+    public event Action OnTurnBack;
+    public event Action<float> OnMouseSpeed;
+    public event Action OnRotateUp;//반동처럼 올라감
+    public event Action OnMouseRotate;
+    public event Action OnFreeView;
+    public event Action OnHome;
+    public event Action OnJump;
+    [SerializeField] private GameObject uiSetting;
 
     private void Update()
     {
+        //인벤토리 총순서
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             OnChangeWeapon?.Invoke(1);
@@ -24,6 +32,62 @@ public class GameManager : MonoBehaviour
             OnChangeWeapon?.Invoke(3);
 
         }
+
+        //자유시점
+        if (Input.GetKeyDown(KeyCode.PageDown))
+        {
+            OnFreeView?.Invoke();
+        }
+        if (Input.GetKeyDown(KeyCode.Home))
+        {
+            OnHome?.Invoke();
+        }
+        //점프
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            OnJump?.Invoke();
+        }
+
+        //마우스 rotate
+        OnMouseRotate?.Invoke();
+
+        //뒤돌기
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            OnTurnBack?.Invoke();
+        }
+
+
+        //마우스 스피드 변경// [ ]
+        if (Input.GetKeyDown(KeyCode.LeftBracket))
+        {
+            Debug.Log("dsds");
+            OnMouseSpeed?.Invoke(-1f);
+        } 
+        else if (Input.GetKeyDown(KeyCode.RightBracket))
+        {
+            OnMouseSpeed?.Invoke(1f);
+        }
+
+
+        //반동 처럼 보임
+        if (Input.GetMouseButtonDown(0))
+        {
+            OnRotateUp?.Invoke();
+        }
+
+        //설정esc
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            //Time.timeScale = 0f;
+            uiSetting.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+        }
+
+
+
     }
 
 
