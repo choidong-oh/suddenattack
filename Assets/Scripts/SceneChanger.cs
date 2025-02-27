@@ -48,15 +48,15 @@ public class SceneChanger : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene("suddenHomepageLoading");
     }
-   
-
-
-
 
     public void Change()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("suddenLoading");
+    }
+    public void GameQuit()
+    {
+        Application.Quit();
     }
     IEnumerator Loading()
     {
