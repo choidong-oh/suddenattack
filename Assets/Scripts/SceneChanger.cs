@@ -43,7 +43,13 @@ public class SceneChanger : MonoBehaviour
         SceneManager.LoadScene("suddenStart");
     }
 
+    public void ChangeHomepage()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("suddenHomepageLoading");
+    }
    
+
 
 
 
@@ -54,40 +60,84 @@ public class SceneChanger : MonoBehaviour
     }
     IEnumerator Loading()
     {
-        var oper = SceneManager.LoadSceneAsync("suddenMain"); //씬매니저.로드에이싱크
-
-        oper.allowSceneActivation = false;
-        image.gameObject.SetActive(true);//로딩 이미지 켜주고 시작
-
-
-        while (oper.isDone == false)//로딩이 끝나지 않앗다면
+        if (SceneManager.GetActiveScene().name == "suddenHomepageLoading")
         {
-            //진짜 로딩중 ~0.9임
-            if (oper.progress < 0.9f)
-            {
+            var oper = SceneManager.LoadSceneAsync("suddenStart"); //씬매니저.로드에이싱크
 
-            }
-            //여까지가 로딩 0.9
-            else
+
+            oper.allowSceneActivation = false;
+            image.gameObject.SetActive(true);//로딩 이미지 켜주고 시작
+
+
+            while (oper.isDone == false)//로딩이 끝나지 않앗다면
             {
-                break;
+                //진짜 로딩중 ~0.9임
+                if (oper.progress < 0.9f)
+                {
+                    //slider.value = oper.progress;
+                }
+                //여까지가 로딩 0.9
+                else
+                {
+                    break;
+                }
+
+                yield return null;
             }
 
-            yield return null;
+            float time = 0; //임시시간
+            float totalTime = Random.Range(4f, 7f);
+            while (time < totalTime)
+            {
+                time += Time.deltaTime * Random.Range(1f, 2f); 
+                slider.value = time / totalTime; // 진행률 반영
+
+                yield return null;
+            }
+            oper.allowSceneActivation = true;
+            image.gameObject.SetActive(false);
+
         }
-        float time = 0; //임시시간
-        while (time < 5f)
+        else if(SceneManager.GetActiveScene().name == "suddenLoading")
         {
-            time += Time.deltaTime; //시간누적
-            slider.value = time / 5f; //가짜 진행률 담음
-            yield return null;
+            var oper = SceneManager.LoadSceneAsync("suddenMain"); //씬매니저.로드에이싱크
+
+
+            oper.allowSceneActivation = false;
+            image.gameObject.SetActive(true);//로딩 이미지 켜주고 시작
+
+
+            while (oper.isDone == false)//로딩이 끝나지 않앗다면
+            {
+                //진짜 로딩중 ~0.9임
+                if (oper.progress < 0.9f)
+                {
+
+                }
+                //여까지가 로딩 0.9
+                else
+                {
+                    break;
+                }
+
+                yield return null;
+            }
+            float time = 0; //임시시간
+            while (time < 5f)
+            {
+                time += Time.deltaTime; //시간누적
+                slider.value = time / 5f; //가짜 진행률 담음
+                yield return null;
+            }
+            oper.allowSceneActivation = true;
+            image.gameObject.SetActive(false);
+
         }
-        oper.allowSceneActivation = true;
-        image.gameObject.SetActive(false);
+
+
+
 
     }
-
-
 
 
 

@@ -223,7 +223,7 @@ public class PlayerMove : MonoBehaviour
     {
         //이동 구현
         //자유시점
-        if (isFreeView == true)
+        if (isFreeView == true )
         {
             FreeMove();
         }
@@ -248,8 +248,8 @@ public class PlayerMove : MonoBehaviour
         rb.useGravity = false;
         coll.enabled = false;
 
-        float mouseX = Input.GetAxisRaw("Mouse X") * mouseSpeed * 0.1f;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * mouseSpeed * 0.1f;
+        float mouseX = Input.GetAxisRaw("Mouse X") * mouseSpeed * 1f;
+        float mouseY = Input.GetAxisRaw("Mouse Y") * mouseSpeed * 1f;
 
         yRotation += mouseX;
         xRotation -= mouseY;

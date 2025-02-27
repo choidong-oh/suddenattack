@@ -26,13 +26,17 @@ public class Boom : MonoBehaviour, IDamageable
     }
     private void Update()
     {
-        if (Input.GetMouseButtonUp(0))
+        if (Time.timeScale > 0)
         {
-            Debug.Log("붐 마우스Up함");
-            ThrowGrenade();
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                Debug.Log("붐 마우스Up함");
+                ThrowGrenade();
+            }
+            CheckGrounded();
+            //gravite2();
         }
-        CheckGrounded();
-        //gravite2();
     }
 
     void OnEnable()

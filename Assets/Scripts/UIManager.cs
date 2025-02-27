@@ -113,5 +113,4 @@ public class UIManager : MonoBehaviour
         WeaponAmmoText.text = ammo + " / " + maxAmmo;
     }
 
-
 }

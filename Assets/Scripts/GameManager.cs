@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject uiSound;
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private GameObject player;
+    [SerializeField] private GameObject boomCamera;
+    private bool isboomCamera = true;  
 
    
 
@@ -121,6 +123,21 @@ public class GameManager : MonoBehaviour
                 //»ý¼º
                 Instantiate(enemyPrefab, po, Quaternion.identity);
             }
+            //ÆøÅº Ä«¸Þ¶ó
+            if (Input.GetKeyDown((KeyCode.PageUp)))
+            {
+                if (isboomCamera == false)
+                {
+                    isboomCamera = true;    
+                    boomCamera.SetActive(false);
+                }
+                else
+                {
+                    isboomCamera = false;
+                    boomCamera.SetActive(true);
+                }
+            }
+
         }
 
     }
