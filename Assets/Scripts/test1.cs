@@ -4,6 +4,8 @@ using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine;
+using TMPro;
+using System;
 
 //PPT //ui위주로 할까?
 //1. 순서 : 제목, 차례 => 영상 => 목표, 만드는과정, 머티리얼 이미지 입히기 => 유니티 기능 => 조명이슈 => 아쉬운점 => 참고
@@ -19,25 +21,58 @@ using UnityEngine;
 //                -여러개 풀링을 썻는데 이걸 한 함수 안에 햇으면함
 //   -참고 : 맵, 네이버블로그, 유튜브, 유니티사이트
 
-public class test1 : MonoBehaviour
+public class test1 : MonoBehaviour, IDamageable
 {
-    private void ChangeLoading()
+    [SerializeField] GameObject[] city;
+    [SerializeField] int nowTr = 0;
+    int asd = 0;
+    [SerializeField] int playerMoney = 100000;
+    public event Action<int> OnChangeMoney;
+
+
+    private void Update()
     {
-        SceneManager.LoadScene("suddenLoading");
+        //if (Input.GetKeyDown(KeyCode.Q))
+        //{
+        //    StartCoroutine(ddddddddd(1));
+            
+        //}
+    }
+    public void buttonNum(int num)
+    {
+        StartCoroutine(ddddddddd(num));
+
     }
 
-    private void ChangeMain()
+
+    IEnumerator ddddddddd(int num)
     {
-        SceneManager.LoadScene("suddenMain");
+        asd = nowTr + num;
+        float time = 0;
+        Vector3 startPos = transform.position;
+        if (asd > city.Length-1)
+        {
+            asd -= city.Length;
+        }
+        Vector3 goPos = city[asd].transform.position;
+        while (time>1f)
+        {
+            time += Time.deltaTime;
+            transform.position = Vector3.Lerp(startPos, goPos, time/1);
+            yield return null;
+        }
+        nowTr = asd;
+        transform.position = goPos;
+
+        var Test123456 = city[asd].GetComponent<test123456>();
+
+        playerMoney -= Test123456.money;
+        OnChangeMoney?.Invoke(playerMoney);
+
     }
 
-    private void ChangeStart()
+    public void GetDamge(int damage)
     {
-        SceneManager.LoadScene("suddenStart");
+
     }
-
-
-   
-
-
 }

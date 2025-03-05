@@ -7,6 +7,9 @@ public class UIManager : MonoBehaviour
     //UIÅØ½ºÆ®
     [SerializeField] private Text EnemyHpText;
     [SerializeField] private Text WeaponAmmoText;
+    //test
+    [SerializeField] private Text MoneyText;
+    [SerializeField] private test1 Test1;
 
     [SerializeField] private RectTransform[] CrossHair;
     Vector2[] CrossHairTr;
@@ -18,17 +21,20 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        //enemy ÇÇÃ¼Å©
-        enemyAi.OnHealthChanged += UpdateHealthUI;
+        ////enemy ÇÇÃ¼Å©
+        //enemyAi.OnHealthChanged += UpdateHealthUI;
 
-        //PlayerÅºÃ¢
-        weaponAK47.OnAk47Ammo += UpdateWeaponAmmoUI;
-        weaponDeagle.OnDeagleAmmo += UpdateWeaponAmmoUI;
+        ////PlayerÅºÃ¢
+        //weaponAK47.OnAk47Ammo += UpdateWeaponAmmoUI;
+        //weaponDeagle.OnDeagleAmmo += UpdateWeaponAmmoUI;
 
-        //Player°¡ ½î°íÀÖ´ÂÁö
-        CrossHairStartValue();
-        weaponAK47.OnAk47Shoot += UpdateCrossHair;
-        weaponDeagle.OnDeagleShoot += UpdateCrossHair;
+        ////Player°¡ ½î°íÀÖ´ÂÁö
+        //CrossHairStartValue();
+        //weaponAK47.OnAk47Shoot += UpdateCrossHair;
+        //weaponDeagle.OnDeagleShoot += UpdateCrossHair;
+
+        //test
+        Test1.OnChangeMoney += UpdateMoneyUI;
 
     }
     private void OnEnable()
@@ -111,6 +117,11 @@ public class UIManager : MonoBehaviour
     void UpdateWeaponAmmoUI(int ammo,int maxAmmo)
     {
         WeaponAmmoText.text = ammo + " / " + maxAmmo;
+    }
+    //test
+    void UpdateMoneyUI(int money)
+    {
+        MoneyText.text = "Player Money : " + money;
     }
 
 }
